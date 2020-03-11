@@ -18,6 +18,8 @@ rm -rf ~/.minikube
 brew install minikube
 brew link minikube
 
+https://kubernetes.github.io/ingress-nginx/deploy/
+
 kubectl config use-context minikube
 minikube start --vm-driver=virtualbox
 minikube stop
@@ -32,6 +34,7 @@ minikube delete && minikube start --memory=4096 --vm-driver=virtualbox
 minikube delete && minikube start --memory=4096 --vm-driver=docker
 
 Check Minikube is running
+minikube status
 kubectl cluster-info
 kubectl get nodes
 
@@ -63,11 +66,24 @@ chectl server:start --installer=operator --platform=minikube
 chectl server:start --installer=operator --platform=minishift
 
 # Installing che on Minikube
+https://www.eclipse.org/che/docs/che-7/running-che-locally/
+https://www.eclipse.org/che/docs/che-7/running-che-locally/#installing-che-on-minikube-using-chectl_running-che-locally
 $ chectl server:start --platform minikube
+
+# Kubernetes
+https://docs.bitnami.com/kubernetes/get-started-kubernetes/
+Watch the following video to learn how to install Kubernetes locally
+https://www.katacoda.com/courses/kubernetes/launch-single-node-cluster
+
 
 # Eclipse Che v7 on kubernetes cluster (not minikube)
 chectl server:start -m -n che --platform=k8s
 chectl server:start --platform=k8s --installer=operator
+
+# Running Che locally
+https://www.eclipse.org/che/docs/che-7/running-che-locally/
+https://www.eclipse.org/che/docs/che-7/running-che-locally/#installing-che-on-minikube-using-chectl_running-che-locally
+
 
 # Running Eclipse Che on Kubernetes using Docker Desktop
 https://che.eclipse.org/running-eclipse-che-on-kubernetes-using-docker-desktop-for-mac-5d972ed511e1
@@ -77,6 +93,7 @@ helm version
 You can now check that Eclipse Che server is running
 $ kubectl get pod --namespace che
 $ kubectl logs -f che-7b68bcc94b-fpbhz -n che
+$ kubectl get events --namespace che  -o custom-columns=TIMESTAMP:lastTimestamp,TYPE:type,MESSAGE:message -w
 
 kubectl delete namespace che
 minikube start --memory=4096 --vm-driver=docker
