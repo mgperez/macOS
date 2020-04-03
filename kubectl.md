@@ -1,17 +1,60 @@
-# Installing kubectl
+# Kubernetes (K8s)
 
 https://rancher.com/learning-paths/how-to-manage-kubernetes-with-kubectl/
 
+Uninstall
+
+```
+$ brew uninstall kubernetes-cli
+$ sudo rm -rf ~/.kube
+$ sudo rm /usr/local/bin/kubectl
+```
+
+
+
+### Install kubectl
+
 https://kubernetes.io/docs/tasks/tools/install-kubectl/
+
+installed package by homebrew
 
 ```
 % brew list | grep -i kube
 kubernetes-cli
-minikube
-
 
 # Installing kubectl
-$ brew install kubernetes-cli
+(2)***$ brew install kubernetes-cli
+$ brew pin kubernetes-cli
+
+# check installed package by homebrew
+$ brew list | grep kube
+```
+
+
+
+https://zgljl2012.com/install-minikube-on-mac-pro/
+
+Download the latest kubectl
+
+```bash
+cd ~/Downloads
+
+curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt`/bin/darwin/amd64/kubectl
+```
+
+change the permission，move to `$PATH`
+
+```bash
+chmod +x ~/Downloads/kubectl
+
+mv ~/Downloads/kubectl /usr/local/bin/
+
+kubectl --help
+```
+
+
+
+```
 
 # Test to ensure the version you installed is up-to-date:
 $ kubectl version --short
@@ -26,24 +69,57 @@ $ kubectl config get-contexts
 $ kubectl config current-context
 
 # Checking the Status of Cluster Components
+# get cs will shows Component Status
 $ kubectl get cs
 ```
+
+
+
+Switched to context
+
+```
+//Kubernetes node (minikube) is ready
+$ kubectl get nodes
+
+$ kubectl config use-context minikube
+rm -rf ~/.kube/cache
+[user@k8s-master ~]# mkdir -p $HOME/.kube
+[user@k8s-master ~]# cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+[user@k8s-master ~]# chown $(id -u):$(id -g) $HOME/.kube/config
+
+export KUBECONFIG=/etc/kubernetes/admin.conf
+
+# Make sure it removes all the containers
+$ docker stop $(docker ps -aq)
+$ docker rm -f $(docker ps -aq)
+
+# After you make sure all the containers have been removed, restart kubelet
+$ systemctl restart kubelet
+
+
+# Switched to context "docker-for-desktop".
+$ kubectl config use-context docker-for-desktop
+```
+
+
 
 ### Check Minikube is running
 
 ```
 # Verifying kubectl configuration
 $ kubectl cluster-info
+$ kubectl get ns
 $ kubectl get nodes -o wide
-
-# create a deployment called nginx which runs a container based off of the default nginx container image. 
-$ kubectl create deploy nginx --image=nginx
+$ kubectl get all
 
 # listing the currently deployed pods:
 $ kubectl get pods
 $ kubectl get pod --all-namespaces
+# see the pod states by running:
+$ kubectl get po -A
 
-$ kubectl get ns
+# listing services
+$ kubectl get svc
 ```
 
 
@@ -52,18 +128,37 @@ $ kubectl get ns
 
 ```
 # create a deployment called nginx which runs a container based off of the default nginx container image. 
-
 $ kubectl create deploy nginx --image=nginx
 
-# listing the currently deployed pods:
-
-$ kubectl get pods
-$ kubectl get pod --all-namespaces
+$ kubectl get deployments
 
 # clean up the deployed resources by typing:
-
 $ kubectl delete deployment nginx
 ```
+
+
+
+### Quarkus in k8s
+
+- [In the Fast Lane: Microservices with Quarkus and Managed Kubernetes](https://medium.com/swlh/microservices-on-kubernetes-quarkus-eks-e4fac1efbef5)
+
+- [Using Quarkus to run Java Apps on Kubernetes](http://heidloff.net/article/quarkus-javaee-microprofile-kubernetes)
+
+- [Hello World - Java (Quarkus)](https://knative.dev/community/samples/serving/helloworld-java-quarkus/)
+
+  
+
+### k3d
+
+- [Faster, Lower, Better with Quarkus in k8s](https://itnext.io/faster-lower-better-with-quarkus-in-k8s-83185af46f36)
+- [K3s with k3d and MetalLB](https://blog.kubernauts.io/k3s-with-k3d-and-metallb-on-mac-923a3255c36e)
+- [k3d - A fast kubernetes dev environment](https://blog.zeerorg.site/post/k3d-kubernetes-dev-env)
+
+
+
+### OpenShift
+
+- [Guide to QuarkusIO](https://www.baeldung.com/quarkus-io)
 
 
 
@@ -76,9 +171,11 @@ kubectl get pods
 
 kubectl get services
 kubectl delete service hello-node
+$ kubectl delete services hello-world
 
 kubectl get deployments
 kubectl delete deployment hello-node
+
 ```
 
 

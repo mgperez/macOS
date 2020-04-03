@@ -1,45 +1,46 @@
 # macOS
+
+
+
+[Bash script to upgrade packages](https://apple.stackexchange.com/questions/190072/is-there-any-way-to-upgrade-brew-cask/231020#231020)
+
+```
+curl -s https://gist.githubusercontent.com/atais/9c72e469b1cbec35c7c430ce03de2a6b/raw/36808a0544628398f26b48f7a3c7b309872ca2c6/cask_upgrade.sh | bash /dev/stdin
+```
+
+**save as** `/usr/local/bin/cask-upgrade`, so you can run it locally as `cask-upgrade` later
+
+```
+$ cd /Applications/dev
+$ ./cask_upgrade.sh
+```
+
+
+
 ```
 $ brew list
-$ brew cask list
-$ brew cask outdated
+
+
 $ brew upgrade virtualbox
 
 ```
 
+Homebrew-Cask
 
-
-
-# Error getting primary cp: could not find master node
 ```
-$ minikube delete
-brew uninstall minikube
-# borrar los ficheros temporales
-rm -rf ~/.minikube
-
-brew install minikube
-brew link minikube
-
-$ minikube addons list
-$ minikube addons enable dashboard
-
-# Arrancar Dashboard
-$ minikube dashboard
+$ brew cask list
+$ brew cask outdated
 ```
 
 
-Optionally, stop the Minikube virtual machine (VM):
 
-```
-minikube stop
-```
+### Get started with Docker Desktop for Mac
+
+https://docs.docker.com/docker-for-mac/
+
+https://docs.docker.com/toolbox/toolbox_install_mac/
 
 
-Optionally, delete the Minikube VM:
-
-```
-minikube delete
-```
 
 
 
@@ -73,7 +74,6 @@ https://freshbrewed.science/getting-started-skaffold/index.html
 
 
 ```
-kubectl config use-context minikube
 minikube start --vm-driver=virtualbox
 minikube stop
 minikube start --memory=4096
@@ -88,32 +88,11 @@ minikube delete && minikube start --memory=4096 --vm-driver=virtualbox
 minikube delete && minikube start --memory=4096 --vm-driver=docker
 ```
 
-Check Minikube is running
-
-```
-minikube status
-```
-
-Check you have virtualization enabled inside your Minikube.
-
-```
-$ minikube ssh "egrep -c 'vmx|svm' /proc/cpuinfo"
-```
-
-
-minikube
-
-```
-$ minikube version
-```
-
 # Installing Kubernetes with Minikube
 Minikube is an easy way to try out a Kubernetes (k8s) cluster locally. It creates a single node Kubernetes stack in a local VM.
 
-minikube dashboard
 minikube addons list
 minikube addons enable ingress
-https://kubernetes.io/docs/tutorials/hello-minikube/
 
 # Eclipse Che
 # Installing Che with chectl
