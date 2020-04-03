@@ -5,13 +5,6 @@ $ brew cask list
 $ brew cask outdated
 $ brew upgrade virtualbox
 
-% brew list | grep -i kube
-kubernetes-cli
-minikube
-
-
-$ brew install kubernetes-cli
-$ kubectl version --client  
 ```
 
 
@@ -32,22 +25,6 @@ $ minikube addons enable dashboard
 
 # Arrancar Dashboard
 $ minikube dashboard
-```
-
-
-
-
-
-### Clean up
-
-Now you can clean up the resources you created in your cluster:
-
-```
-kubectl get services
-kubectl delete service hello-node
-
-kubectl get deployments
-kubectl delete deployment hello-node
 ```
 
 
@@ -115,15 +92,6 @@ Check Minikube is running
 
 ```
 minikube status
-kubectl cluster-info
-kubectl get nodes
-watch kubectl get pods
-```
-
-With this command, you will create a proxy server on port 8001 for accessing the Kubernetes Dashboard. It will be available at: localhost:8001/ui.
-
-```
-kubectl proxy
 ```
 
 Check you have virtualization enabled inside your Minikube.
@@ -133,13 +101,11 @@ $ minikube ssh "egrep -c 'vmx|svm' /proc/cpuinfo"
 ```
 
 
-minikube (include output of minikube version and kubectl version)
+minikube
 
 ```
 $ minikube version
 ```
-
-
 
 # Installing Kubernetes with Minikube
 Minikube is an easy way to try out a Kubernetes (k8s) cluster locally. It creates a single node Kubernetes stack in a local VM.
@@ -148,8 +114,6 @@ minikube dashboard
 minikube addons list
 minikube addons enable ingress
 https://kubernetes.io/docs/tutorials/hello-minikube/
-
-kubernetes (include output of kubectl version)
 
 # Eclipse Che
 # Installing Che with chectl
@@ -160,23 +124,6 @@ chectl server:start --installer=operator --platform=minikube
 chectl server:start --installer=operator --platform=minishift
 
 
-
-### NGINX Ingress Controller
-
-https://kubernetes.github.io/ingress-nginx/deploy/
-
-Confirm the nginx-ingress-controller deployment exists:
-
-```
-$ kubectl get pods -n ingress-nginx
-```
-
-Verify installation¶
-To check if the ingress controller pods have started, run the following command:
-
-```
-kubectl get pods --all-namespaces -l app.kubernetes.io/name=ingress-nginx --watch
-```
 
 # Installing che on Minikube
 https://www.eclipse.org/che/docs/che-7/running-che-locally/
@@ -203,12 +150,7 @@ https://che.eclipse.org/running-eclipse-che-on-kubernetes-using-docker-desktop-f
 brew install kubernetes-helm
 helm version
 
-You can now check that Eclipse Che server is running
-$ kubectl get pod --namespace che
-$ kubectl logs -f che-7b68bcc94b-fpbhz -n che
-$ kubectl get events --namespace che  -o custom-columns=TIMESTAMP:lastTimestamp,TYPE:type,MESSAGE:message -w
 
-kubectl delete namespace che
 minikube start --memory=4096 --vm-driver=docker
 chectl server:start --platform=minikube
 
@@ -220,7 +162,7 @@ https://www.katacoda.com/courses/kubernetes/launch-single-node-cluster
 
 Openshift (include output of oc version)
 minishift (include output of minishift version and oc version)
-docker-desktop + K8S (include output of docker version and kubectl version)
+docker-desktop + K8S
 
 
 https://github.com/eclipse/che-operator/tree/master/olm
