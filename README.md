@@ -34,13 +34,15 @@ $ brew cask outdated
 
 
 
+## Prerequisites
+
 ### Get started with Docker Desktop for Mac
 
-https://docs.docker.com/docker-for-mac/
+https://docs.docker.com/docker-for-mac/install/
 
 https://docs.docker.com/toolbox/toolbox_install_mac/
 
-
+[Install on MacOS by berlioz | Katacoda](https://www.katacoda.com/berlioz/scenarios/install-on-mac)
 
 
 

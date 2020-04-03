@@ -130,7 +130,17 @@ $ kubectl get svc
 # create a deployment called nginx which runs a container based off of the default nginx container image. 
 $ kubectl create deploy nginx --image=nginx
 
+# View the Deployment:
 $ kubectl get deployments
+
+# View the Pod: 
+$ kubectl get pods
+
+# View cluster events:
+$ kubectl get events
+
+# View the kubectl configuration:
+$ kubectl config view
 
 # clean up the deployed resources by typing:
 $ kubectl delete deployment nginx
