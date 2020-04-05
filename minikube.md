@@ -60,15 +60,7 @@ https://kubernetes.io/es/docs/tasks/tools/install-minikube/
 
 ```shell
 $ brew install minikube
-
-or 
-
-$ brew cask install minikube
-$ brew install kubectx
-$ kubectx minikube
-
-# Switched to context "docker-for-desktop".
-$ kubectx docker-for-desktop
+$ minikube version
 ```
 
 Upgrading minikube 
@@ -98,37 +90,21 @@ $ minikube version
 
 # Start Minikube
 
-### [docker](https://minikube.sigs.k8s.io/docs/reference/drivers/docker/)
-
-```shell
-$ minikube delete && minikube start --memory=4096 --vm-driver=docker
-```
-
-To make docker the default driver:
-
-```
-$ minikube config set driver docker
-$ minikube start
-```
-
-### [virtualbox](As hypervisor I'm using VirtualBox which is supported on Mac, Linux and Windows.)
+### [virtualbox](https://minikube.sigs.k8s.io/docs/reference/drivers/virtualbox/)
 
 As hypervisor I’m using VirtualBox which is supported on Mac, Linux and Windows.
-
-```shell
-$ minikube delete && minikube start --memory=4096 --driver=virtualbox
-```
 
 ### settings
 
 ```shell
 $ minikube config set driver virtualbox
-$ minikube config set cpus 4
+$ minikube config set disk-size 50g
+$ minikube delete && minikube start --memory=4096
+$ minikube addons enable ingress
+
 # Increasing memory allocation
 $ minikube config set memory 8192
-$ minikube config set disk-size 50g
-$ minikube addons enable ingress 
-$ minikube start
+$ minikube config set cpus 4
 ```
 
 Check Minikube is running
@@ -139,8 +115,6 @@ $ minikube status
 
 //Kubernetes node (minikube) is ready
 $ kubectl get nodes
-
-$ kubectl config use-context minikube
 
 # see the pod states by running:
 $ kubectl get po -A
@@ -155,6 +129,25 @@ $ minikube addons list
 # Arrancar Dashboard
 $ minikube dashboard
 ```
+
+
+
+### Switched to context
+
+```shell
+//Kubernetes node (minikube) is ready
+$ kubectl get nodes
+
+$ brew install kubectx
+
+# kubectl config use-context minikube
+$ kubectx minikube
+
+# Switched to context "docker-for-desktop".
+$ kubectx docker-for-desktop
+```
+
+
 
 ### Use minikube's built-in docker daemon:
 
