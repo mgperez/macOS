@@ -7,23 +7,25 @@ Uninstall
 ```
 $ brew uninstall kubernetes-cli
 $ sudo rm -rf ~/.kube
+
+# Direct
 $ sudo rm /usr/local/bin/kubectl
 ```
 
 
 
-### Install kubectl
+### Installation Guide
 
 https://kubernetes.io/docs/tasks/tools/install-kubectl/
 
-installed package by homebrew
+Brew
 
 ```
 % brew list | grep -i kube
 kubernetes-cli
 
 # Installing kubectl
-(2)***$ brew install kubernetes-cli
+$ brew install kubernetes-cli
 $ brew pin kubernetes-cli
 
 # check installed package by homebrew
@@ -31,6 +33,8 @@ $ brew list | grep kube
 ```
 
 
+
+Direct
 
 https://zgljl2012.com/install-minikube-on-mac-pro/
 
@@ -145,30 +149,6 @@ $ kubectl config view
 # clean up the deployed resources by typing:
 $ kubectl delete deployment nginx
 ```
-
-
-
-### Quarkus in k8s
-
-- [In the Fast Lane: Microservices with Quarkus and Managed Kubernetes](https://medium.com/swlh/microservices-on-kubernetes-quarkus-eks-e4fac1efbef5)
-
-- [Using Quarkus to run Java Apps on Kubernetes](http://heidloff.net/article/quarkus-javaee-microprofile-kubernetes)
-
-- [Hello World - Java (Quarkus)](https://knative.dev/community/samples/serving/helloworld-java-quarkus/)
-
-  
-
-### k3d
-
-- [Faster, Lower, Better with Quarkus in k8s](https://itnext.io/faster-lower-better-with-quarkus-in-k8s-83185af46f36)
-- [K3s with k3d and MetalLB](https://blog.kubernauts.io/k3s-with-k3d-and-metallb-on-mac-923a3255c36e)
-- [k3d - A fast kubernetes dev environment](https://blog.zeerorg.site/post/k3d-kubernetes-dev-env)
-
-
-
-### OpenShift
-
-- [Guide to QuarkusIO](https://www.baeldung.com/quarkus-io)
 
 
 

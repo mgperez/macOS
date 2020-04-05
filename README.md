@@ -13,16 +13,7 @@ curl -s https://gist.githubusercontent.com/atais/9c72e469b1cbec35c7c430ce03de2a6
 ```
 $ cd /Applications/dev
 $ ./cask_upgrade.sh
-```
-
-
-
-```
 $ brew list
-
-
-$ brew upgrade virtualbox
-
 ```
 
 Homebrew-Cask
@@ -30,6 +21,23 @@ Homebrew-Cask
 ```
 $ brew cask list
 $ brew cask outdated
+```
+
+
+
+VirtualBox
+
+Install VirtualBox for Mac using Homebrew
+
+```shell
+$ brew cask install virtualbox
+```
+
+Upgrading VirtualBox 
+
+```shell
+$ brew cask outdated
+$ brew cask upgrade virtualbox
 ```
 
 
@@ -42,9 +50,15 @@ https://docs.docker.com/docker-for-mac/install/
 
 https://docs.docker.com/toolbox/toolbox_install_mac/
 
-[Install on MacOS by berlioz | Katacoda](https://www.katacoda.com/berlioz/scenarios/install-on-mac)
+- [Install on MacOS by berlioz | Katacoda](https://www.katacoda.com/berlioz/scenarios/install-on-mac)
+
+- [Docker Desktop](https://hub.docker.com/search?q=&type=edition&offering=community&sort=updated_at&order=desc)
 
 
+
+## Usage
+
+Start a cluster using the docker driver:
 
 ### Setting Up the xhyve Driver
 
@@ -73,29 +87,6 @@ https://codersociety.com/blog/articles/build-and-deploy-kubernetes-applications-
 
 https://freshbrewed.science/getting-started-skaffold/index.html
 
-
-
-```
-minikube start --vm-driver=virtualbox
-minikube stop
-minikube start --memory=4096
-minikube start --wait=false --memory=4096
-minikube start --memory=4096 --cpus=2
-
-minikube stop
-https://minikube.sigs.k8s.io/docs/reference/drivers/
-minikube delete && minikube start --memory=6000 --vm-driver=kvm
-minikube delete && minikube start --memory=4096 --vm-driver=virtualbox
-
-minikube delete && minikube start --memory=4096 --vm-driver=docker
-```
-
-# Installing Kubernetes with Minikube
-Minikube is an easy way to try out a Kubernetes (k8s) cluster locally. It creates a single node Kubernetes stack in a local VM.
-
-minikube addons list
-minikube addons enable ingress
-
 # Eclipse Che
 # Installing Che with chectl
 chectl server:start --installer=helm --platform=minikube
@@ -103,8 +94,6 @@ chectl server:start --platform minikube -a operator
 chectl server:start --installer=operator --platform=minikube
 
 chectl server:start --installer=operator --platform=minishift
-
-
 
 # Installing che on Minikube
 https://www.eclipse.org/che/docs/che-7/running-che-locally/
