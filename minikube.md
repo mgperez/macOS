@@ -34,6 +34,7 @@ $ minikube stop
 $ minikube delete
 $ docker stop $(docker ps -aq)
 $ docker rm -f $(docker ps -aq)
+$ docker rmi $(docker images --filter "dangling=true" -q --no-trunc)
 
 # borrar los ficheros temporales
 $ rm -rf ~/.minikube ~/.kube
@@ -112,8 +113,10 @@ Check Minikube is running
 ```
 $ minikube ip
 $ minikube status
+$ kubectl get services
 
 //Kubernetes node (minikube) is ready
+# To view the nodes in the cluster
 $ kubectl get nodes
 
 # see the pod states by running:

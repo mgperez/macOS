@@ -56,6 +56,28 @@ https://docs.docker.com/toolbox/toolbox_install_mac/
 
 
 
+### What is DBeaver?
+
+https://www.code2bits.com/how-to-install-dbeaver-community-on-macos-using-homebrew/
+
+dbeaver-community requires Java 8+. You can install the latest version with:
+  brew cask install adoptopenjdk
+
+### Failed to create java virtual machine .
+
+Edit /Applications/DBeaver.app/Contents/Info.plist file, and add jdk path like this:
+
+```
+<key>Eclipse</key>
+  <array>
+    <string>-vm</string>
+    <string>/Library/Java/JavaVirtualMachines/jdk1.8.0_202.jdk/Contents/Home/bin/java</string>
+    <!-- Other properties left out-->
+  </array>
+```
+
+
+
 ## Usage
 
 Start a cluster using the docker driver:
