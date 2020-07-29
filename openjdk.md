@@ -1,4 +1,29 @@
+Ver todas las versiones de jdk instaladas 
+
+```shell
+$ /usr/libexec/java_home -V
+```
+
+Exportar la variable $JAVA_HOME en el archivo “.bash_profile”
+
+Abrir una ventana de la terminal y acceder como super usuario,
+
+```shell
+$ sudo su
+$ nano .bash_profile
+$ exit
+$ cd $HOME
+$ source .bash_profile
+$ echo $JAVA_HOME
+```
+
+
+
 https://www.oracle.com/java/technologies/javase-downloads.html
+
+
+
+[Uninstalling the JRE on macOS](https://docs.oracle.com/javase/10/install/installation-jdk-and-jre-macos.htm#JSJIG-GUID-577CEA7C-E51C-416D-B9C6-B1469F45AC78)
 
 
 
